@@ -25,10 +25,15 @@ func _ready():
 	var temp = blocksize
 	var counterx = 0
 	var countery = 1
+	var count = 0
 	for i in board:
 		var newcard = cardscene.instance()
 		add_child(newcard)
 		newcard.set_position(blockcenter)
+		connect("matched",newcard,"_on_matched")
+		connect("unpick",newcard,"_on_unpicked")
+		newcard.connect("clicked",self,"onCardClicked")
+		newcard.initialize(count,i)
 		counterx+=1
 		if(counterx<4):
 			temp.x += blocksize.x
@@ -37,6 +42,7 @@ func _ready():
 			temp = Vector2(blocksize.x,countery*blocksize.y)
 			counterx = 0
 		blockcenter = Vector2(temp.x,temp.y)
+		count += 1
 		print(blockcenter)
 	
 	#pass # Replace with function body.
@@ -44,10 +50,11 @@ func _ready():
 
 func onCardClicked(cardnum):
 	if(lastClicked != -1):
-		if(board[lastClicked] == board[cardnum]):
+		if(board[lastClicked] == board[cardnum] and lastClicked != cardnum):
 			emit_signal("matched",lastClicked,cardnum)
-			board.remove(lastClicked)
-			board.remove(cardnum)
+			#board.remove(lastClicked)
+			#board.remove(cardnum)
+			lastClicked = -1
 		else:
 			emit_signal("unpicked",lastClicked,cardnum)
 			lastClicked = -1
