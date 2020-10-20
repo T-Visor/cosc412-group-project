@@ -11,6 +11,11 @@ enum {APPLE,BANANA,BLACKBERRY,CHERRY,COCNUT,GRAPE,PINEAPPLE,STRAWBERRY}
 var board: Array  = [APPLE,BANANA,BLACKBERRY,CHERRY,COCNUT,GRAPE,PINEAPPLE,STRAWBERRY,APPLE,BANANA,BLACKBERRY,CHERRY,COCNUT,GRAPE,PINEAPPLE,STRAWBERRY]
 var cardscene = preload("res://card.tscn")
 # Called when the node enters the scene tree for the first time.
+
+var lastClicked = -1
+signal matched
+signal unpick
+
 func _ready():
 	board.shuffle()
 	var size = OS.get_window_size()
@@ -37,6 +42,17 @@ func _ready():
 	#pass # Replace with function body.
 
 
+func onCardClicked(cardnum):
+	if(lastClicked != -1):
+		if(board[lastClicked] == board[cardnum]):
+			emit_signal("matched",lastClicked,cardnum)
+			board.remove(lastClicked)
+			board.remove(cardnum)
+		else:
+			emit_signal("unpicked",lastClicked,cardnum)
+			lastClicked = -1
+	else:
+		lastClicked = cardnum
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	
