@@ -6,9 +6,9 @@ extends Node2D
 # var a = 2
 # var b = "text"
 
-enum {APPLE,BANANA,BLACKBERRY,CHERRY,COCNUT,GRAPE,PINEAPPLE,STRAWBERRY}
+enum {APPLE,BANANA,BLACKBERRY,CHERRY,COCONUT,GRAPE,PINEAPPLE,STRAWBERRY}
 
-var board: Array  = [APPLE,BANANA,BLACKBERRY,CHERRY,COCNUT,GRAPE,PINEAPPLE,STRAWBERRY,APPLE,BANANA,BLACKBERRY,CHERRY,COCNUT,GRAPE,PINEAPPLE,STRAWBERRY]
+var board: Array  = [APPLE,BANANA,BLACKBERRY,CHERRY,COCONUT,GRAPE,PINEAPPLE,STRAWBERRY,APPLE,BANANA,BLACKBERRY,CHERRY,COCONUT,GRAPE,PINEAPPLE,STRAWBERRY]
 var cardscene = preload("res://card.tscn")
 # Called when the node enters the scene tree for the first time.
 
@@ -56,7 +56,7 @@ func onCardClicked(cardnum):
 			#board.remove(cardnum)
 			lastClicked = -1
 		else:
-			emit_signal("unpicked",lastClicked,cardnum)
+			emit_signal("unpick",lastClicked,cardnum)
 			lastClicked = -1
 	else:
 		lastClicked = cardnum
