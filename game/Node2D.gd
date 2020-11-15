@@ -44,6 +44,9 @@ func _ready():
 		blockcenter = Vector2(temp.x,temp.y)
 		count += 1
 		print(blockcenter)
+	var v1 = Vector3(1,-5,2)
+	var v2 = Vector3(0,4,-1)
+	print(v1.dot(v2))
 	
 	#pass # Replace with function body.
 
