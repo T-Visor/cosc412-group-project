@@ -13,8 +13,21 @@
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Custom styles for this template -->
-    <link href="css/simple-sidebar.css" rel="stylesheet">
+    <!-- Use background image on the entire page -->
+    <style>
+body {
+  background: url('wallpaper/desk-wallpaper.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+}
+
+.btn-success.btn-send {
+	background-color: #000;
+	border-color: #000;
+}
+    </style>
 
   </head>
 
@@ -80,8 +93,9 @@
                   <div class="help-block with-errors"></div>
                 </div>
               </div>
-              <div class="col-md-12">
-                <input type="submit" class="btn btn-success btn-send" value="Send message">
+              <div class="col-md-12 text-center">
+                <input type="submit" class="btn btn-success btn-send"
+                value="Send message">
               </div>
             </div>
             <div class="row">
