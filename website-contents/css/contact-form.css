@@ -1,0 +1,12 @@
+body {
+  background: url('../wallpaper/desk-wallpaper.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+}
+
+.btn-success.btn-send {
+	background-color: #000;
+	border-color: #000;
+}
