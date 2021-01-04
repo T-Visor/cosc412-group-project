@@ -18,8 +18,12 @@ signal unpick
 
 func _ready():
 	board.shuffle()
-	var size = OS.get_window_size()
-	var blocksize = Vector2(size.x/4,size.y/4)
+	# Center window on screen
+	var screen_size = OS.get_screen_size(OS.get_current_screen())
+	var window_size = OS.get_window_size()
+	var centered_pos = (screen_size - window_size) / 2
+	OS.set_window_position(centered_pos)
+	var blocksize = Vector2(window_size.x/5,window_size.y/5)
 	print(blocksize)
 	var blockcenter = Vector2(blocksize.x,blocksize.y)
 	var temp = blocksize
